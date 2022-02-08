@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/eu-evops/go-junit-report/parser"
+	"github.com/eu-evops/go-junit-report/jsonparser"
 )
 
 // JUnitTestSuites is a collection of JUnit test suites.
@@ -60,7 +60,7 @@ type JUnitFailure struct {
 
 // JUnitReportXML writes a JUnit xml representation of the given report to w
 // in the format described at http://windyroad.org/dl/Open%20Source/JUnit.xsd
-func JUnitReportXML(report *parser.Report, noXMLHeader bool, goVersion string, w io.Writer) error {
+func JUnitReportXML(report *jsonparser.Report, noXMLHeader bool, goVersion string, w io.Writer) error {
 	suites := JUnitTestSuites{}
 
 	// convert Report to JUnit test suites
@@ -99,7 +99,7 @@ func JUnitReportXML(report *parser.Report, noXMLHeader bool, goVersion string, w
 				Failure:   nil,
 			}
 
-			if test.Result == parser.FAIL {
+			if test.Result == jsonparser.FAIL {
 				ts.Failures++
 				testCase.Failure = &JUnitFailure{
 					Message:  "Failed",
@@ -108,7 +108,7 @@ func JUnitReportXML(report *parser.Report, noXMLHeader bool, goVersion string, w
 				}
 			}
 
-			if test.Result == parser.SKIP {
+			if test.Result == jsonparser.SKIP {
 				testCase.SkipMessage = &JUnitSkipMessage{strings.Join(test.Output, "\n")}
 			}
 
@@ -148,12 +148,12 @@ func JUnitReportXML(report *parser.Report, noXMLHeader bool, goVersion string, w
 	return nil
 }
 
-func mergeBenchmarks(benchmarks []*parser.Benchmark) []*parser.Benchmark {
-	var merged []*parser.Benchmark
-	benchmap := make(map[string][]*parser.Benchmark)
+func mergeBenchmarks(benchmarks []*jsonparser.Benchmark) []*jsonparser.Benchmark {
+	var merged []*jsonparser.Benchmark
+	benchmap := make(map[string][]*jsonparser.Benchmark)
 	for _, bm := range benchmarks {
 		if _, ok := benchmap[bm.Name]; !ok {
-			merged = append(merged, &parser.Benchmark{Name: bm.Name})
+			merged = append(merged, &jsonparser.Benchmark{Name: bm.Name})
 		}
 		benchmap[bm.Name] = append(benchmap[bm.Name], bm)
 	}

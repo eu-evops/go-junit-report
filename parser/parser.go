@@ -2,6 +2,7 @@ package parser
 
 import (
 	"bufio"
+	"fmt"
 	"io"
 	"regexp"
 	"strconv"
@@ -107,6 +108,7 @@ func Parse(r io.Reader, pkgName string) (*Report, error) {
 	// parse lines
 	for {
 		l, _, err := reader.ReadLine()
+		fmt.Printf("%s\n", l)
 		if err != nil && err == io.EOF {
 			break
 		} else if err != nil {
@@ -244,11 +246,15 @@ func Parse(r io.Reader, pkgName string) (*Report, error) {
 				cur = match[1]
 			}
 
+			// fmt.Printf("LINE: %s\n", line)
+			// fmt.Printf("CUR: %s\n", cur)
+
 			// buffer anything else that we didn't recognize
 			buffers[cur] = append(buffers[cur], line)
 
 			// if we have a current test, also append to its output
 			test := findTest(tests, cur)
+			// fmt.Printf("TEST: %#v\n", test)
 			if test != nil {
 				if strings.HasPrefix(line, test.SubtestIndent+"    ") {
 					test.Output = append(test.Output, strings.TrimPrefix(line, test.SubtestIndent+"    "))
