@@ -1,0 +1,8 @@
+goos: linux
+goarch: amd64
+pkg: package/bench
+cpu: Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz
+BenchmarkOne-8   	1000000000	         0.2640 ns/op
+BenchmarkTwo-8   	39787592	        33.10 ns/op
+PASS
+ok  	package/bench	1.642s

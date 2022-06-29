@@ -1,0 +1,101 @@
+=== RUN   TestFailWithStdoutAndTestOutput
+multi
+line
+stdout
+single-line stdout
+    stdout_test.go:11: single-line error
+    stdout_test.go:12: multi
+        line
+        error
+--- FAIL: TestFailWithStdoutAndTestOutput (0.00s)
+=== RUN   TestFailWithStdoutAndNoTestOutput
+multi
+line
+stdout
+single-line stdout
+--- FAIL: TestFailWithStdoutAndNoTestOutput (0.00s)
+=== RUN   TestFailWithTestOutput
+    stdout_test.go:22: single-line error
+    stdout_test.go:23: multi
+        line
+        error
+--- FAIL: TestFailWithTestOutput (0.00s)
+=== RUN   TestFailWithNoTestOutput
+--- FAIL: TestFailWithNoTestOutput (0.00s)
+=== RUN   TestPassWithStdoutAndTestOutput
+multi
+line
+stdout
+single-line stdout
+    stdout_test.go:33: single-line info
+    stdout_test.go:34: multi
+        line
+        info
+--- PASS: TestPassWithStdoutAndTestOutput (0.00s)
+=== RUN   TestPassWithStdoutAndNoTestOutput
+multi
+line
+stdout
+single-line stdout
+--- PASS: TestPassWithStdoutAndNoTestOutput (0.00s)
+=== RUN   TestPassWithTestOutput
+    stdout_test.go:43: single-line info
+    stdout_test.go:44: multi
+        line
+        info
+--- PASS: TestPassWithTestOutput (0.00s)
+=== RUN   TestPassWithNoTestOutput
+--- PASS: TestPassWithNoTestOutput (0.00s)
+=== RUN   TestSubtests
+=== RUN   TestSubtests/TestFailWithStdoutAndTestOutput
+multi
+line
+stdout
+single-line stdout
+    stdout_test.go:11: single-line error
+    stdout_test.go:12: multi
+        line
+        error
+=== RUN   TestSubtests/TestFailWithStdoutAndNoTestOutput
+multi
+line
+stdout
+single-line stdout
+=== RUN   TestSubtests/TestFailWithTestOutput
+    stdout_test.go:22: single-line error
+    stdout_test.go:23: multi
+        line
+        error
+=== RUN   TestSubtests/TestFailWithNoTestOutput
+=== RUN   TestSubtests/TestPassWithStdoutAndTestOutput
+multi
+line
+stdout
+single-line stdout
+    stdout_test.go:33: single-line info
+    stdout_test.go:34: multi
+        line
+        info
+=== RUN   TestSubtests/TestPassWithStdoutAndNoTestOutput
+multi
+line
+stdout
+single-line stdout
+=== RUN   TestSubtests/TestPassWithTestOutput
+    stdout_test.go:43: single-line info
+    stdout_test.go:44: multi
+        line
+        info
+=== RUN   TestSubtests/TestPassWithNoTestOutput
+--- FAIL: TestSubtests (0.00s)
+    --- FAIL: TestSubtests/TestFailWithStdoutAndTestOutput (0.00s)
+    --- FAIL: TestSubtests/TestFailWithStdoutAndNoTestOutput (0.00s)
+    --- FAIL: TestSubtests/TestFailWithTestOutput (0.00s)
+    --- FAIL: TestSubtests/TestFailWithNoTestOutput (0.00s)
+    --- PASS: TestSubtests/TestPassWithStdoutAndTestOutput (0.00s)
+    --- PASS: TestSubtests/TestPassWithStdoutAndNoTestOutput (0.00s)
+    --- PASS: TestSubtests/TestPassWithTestOutput (0.00s)
+    --- PASS: TestSubtests/TestPassWithNoTestOutput (0.00s)
+FAIL
+exit status 1
+FAIL	package/stdout	0.001s

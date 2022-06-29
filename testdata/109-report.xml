@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="4">
+	<testsuite name="package/name/bench" tests="4" failures="0" errors="0" id="0" hostname="hostname" time="0.762" timestamp="2022-01-01T00:00:00Z">
+		<properties>
+			<property name="go.version" value="1.0"></property>
+		</properties>
+		<testcase name="TestA" classname="package/name/bench" time="0.000">
+			<system-out><![CDATA[    a_test.go:6: ok]]></system-out>
+		</testcase>
+		<testcase name="TestZ" classname="package/name/bench" time="0.000">
+			<system-out><![CDATA[    z_test.go:6: ok]]></system-out>
+		</testcase>
+		<testcase name="BenchmarkTest" classname="package/name/bench" time="0.441">
+			<system-out><![CDATA[    bench_test.go:12: 1
+    bench_test.go:12: 100
+    bench_test.go:12: 10000
+    bench_test.go:12: 1000000
+    bench_test.go:12: 100000000
+    bench_test.go:12: 1000000000]]></system-out>
+		</testcase>
+		<testcase name="BenchmarkOtherTest" classname="package/name/bench" time="0.264"></testcase>
+		<system-out><![CDATA[goos: linux
+goarch: amd64
+pkg: package/name/bench]]></system-out>
+	</testsuite>
+</testsuites>
